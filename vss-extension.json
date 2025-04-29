@@ -1,0 +1,73 @@
+{
+    "manifestVersion": 1,
+    "id": "repo-html-viewer-widget-extension", 
+    "version": "1.0.7",
+    "name": "Repository HTML Viewer Widget",
+    "description": "Displays an HTML file from a specified Azure DevOps Git repository.",
+    "publisher": "TharunMakala", 
+    "categories": ["Azure Repos","Azure pipelines"],
+    "targets": [
+      {
+        "id": "Microsoft.VisualStudio.Services"
+      }
+    ],
+    "icons": {
+      "default": "dist/img/icon.png" 
+    },
+    
+    "scopes": [
+      "vso.code"
+    ],
+    "contributions": [
+    
+      {
+        "id": "repo-html-viewer-widget", 
+        "type": "ms.vss-dashboards-web.widget",
+        "targets": [
+          "ms.vss-dashboards-web.widget-catalog"
+        ],
+        "properties": {
+          "name": "Repository HTML Viewer",
+          "description": "Displays an HTML file from a configured repository.",
+          "previewImageUrl": "dist/img/preview.png", 
+          "uri": "dist/widget.html", 
+          "supportedSizes": [
+             { "rowSpan": 2, "columnSpan": 2 },
+             { "rowSpan": 4, "columnSpan": 4 },
+             { "rowSpan": 6, "columnSpan": 6 },
+             { "rowSpan": 8, "columnSpan": 8 },
+             { "rowSpan": 10, "columnSpan": 10 },
+             { "rowSpan": 12, "columnSpan": 12 }
+          ],
+          "supportedScopes": ["project_team"],
+           
+          "contributionId": "repo-html-viewer-widget-configuration"
+        }
+      },
+      
+      {
+        "id": "repo-html-viewer-widget-configuration", 
+        "type": "ms.vss-dashboards-web.widget-configuration",
+        "targets": [
+          "ms.vss-dashboards-web.widget-configuration" 
+        ],
+        "properties": {
+          "name": "Repository HTML Viewer Configuration",
+          "description": "Configure the repository and file path.",
+          "uri": "dist/configuration.html" 
+        }
+      }
+    ],
+    "files": [
+      {
+        "path": "dist", 
+        "addressable": true
+      },
+      {
+        "path": "node_modules/vss-web-extension-sdk/lib",
+        "addressable": true,
+        "packagePath": "lib"
+      }
+    ]
+  }
+  
