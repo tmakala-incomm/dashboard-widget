@@ -4,11 +4,21 @@ import * as SDK from "vss-web-extension-sdk";
 
 console.log("widget.js (HTML Viewer) starting execution.");
 
+
+
+
 // Initialize the SDK before using any VSS/SDK functions
 SDK.init({
     explicitNotifyLoaded: true,
     usePlatformScripts: true
 });
+
+
+if (typeof SDK === 'undefined') {
+    console.error('SDK is not loaded properly');
+  } else {
+    console.log('SDK is loaded');
+  }
 
 // Wait until the environment is ready
 VSS.ready(function () {
@@ -19,7 +29,11 @@ VSS.ready(function () {
         ["TFS/VersionControl/GitRestClient", "TFS/VersionControl/Contracts"],
         function (GitRestClient, GitContracts) {
             console.log("TFS/VersionControl modules loaded via VSS.require().");
-
+            if (GitRestClient && GitContracts) {
+                console.log("GitRestClient and GitContracts are available.");
+            } else {
+                console.error("Failed to load required modules.");
+            }
             const getClient = GitRestClient.getClient;
             const GitVersionType = GitContracts.GitVersionType;
 

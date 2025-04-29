@@ -2,10 +2,19 @@ import * as SDK from "vss-web-extension-sdk";
 
 console.log("configuration.js starting execution.");
 
+if (typeof SDK === 'undefined') {
+    console.error('SDK is not loaded properly');
+  } else {
+    console.log('SDK is loaded');
+  }
+
+
 SDK.init({
     loaded: false,
     applyTheme: true
 });
+
+
 
 SDK.ready().then(() => {
     console.log("Configuration SDK Ready. Initializing configuration logic.");

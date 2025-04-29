@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "repo-html-viewer-widget-extension", 
-    "version": "1.0.7",
+    "version": "1.0.8",
     "name": "Repository HTML Viewer Widget",
     "description": "Displays an HTML file from a specified Azure DevOps Git repository.",
     "publisher": "TharunMakala", 
